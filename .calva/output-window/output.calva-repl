@@ -1,0 +1,182 @@
+; Jacking in...
+; Starting Jack-in Terminal: lein update-in :dependencies conj '[nrepl,"0.9.0"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.27.4"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- repl :headless
+; Connecting ...
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS: 
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉inventory-clj.core꞉> (a-record :instance_ocid)
+; Execution error (ArityException) at inventory-clj.core/eval2686 (form-init12010973594605387915.clj:13).
+; Wrong number of args (0) passed to: clojure.lang.PersistentHashMap
+clj꞉inventory-clj.core꞉> 
+"ocid1.instance.oc1.eu-zurich-1.ab5heljr22ho3qoduawklsmwywq3ddnpw4s2ihckrvdcyapba6lvziw7xfyq"
+clj꞉inventory-clj.core꞉> 
+(first-record)
+{:ad "eu-zurich-1-ad-1",
+ :compartment_id "ocid1.tenancy.oc1..aaaaaaaa27yjl4rkq2k36aq6wrihit7hwh7edelz2yz6vlrvergthidqdg3a",
+ :display_name "",
+ :fabric_layer "overlay",
+ :host_serial "1924XD600C",
+ :instance_ocid "ocid1.instance.oc1.eu-zurich-1.ab5heljr22ho3qoduawklsmwywq3ddnpw4s2ihckrvdcyapba6lvziw7xfyq",
+ :region "eu-zurich-1",
+ :shape "VM.Standard2.16",
+ :state "Running",
+ :tenant_id "ocid1.tenancy.oc1..aaaaaaaa27yjl4rkq2k36aq6wrihit7hwh7edelz2yz6vlrvergthidqdg3a",
+ :time_created "2019-08-16 09:50:27",
+ :time_terminated ""}
+clj꞉inventory-clj.core꞉> 
+(records 1)
+"2022-03-01T00.10.20Z_vmi_VmiInstanceData_000007_eu-zurich-1.json"
+clj꞉inventory-clj.core꞉> 
+#'inventory-clj.core/get-first-record
+clj꞉inventory-clj.core꞉> 
+(str records-path (records 1))
+"/Users/jdhatch/Records/Source/2022-03-01T00.10.20Z_vmi_VmiInstanceData_000007_eu-zurich-1.json"
+clj꞉inventory-clj.core꞉> 
+(get-first-record (str records-path (records :VmiAttachmentData)))
+
+
+; Execution error (ClassCastException) at inventory-clj.core/get-first-record (form-init12010973594605387915.clj:30).
+; class java.lang.String cannot be cast to class clojure.lang.IFn (java.lang.String is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'app')
+clj꞉inventory-clj.core꞉> 
+#'inventory-clj.core/get-first-record
+clj꞉inventory-clj.core꞉> 
+{:ad "eu-zurich-1-ad-1",
+ :compartment_id "ocid1.tenancy.oc1..aaaaaaaa27yjl4rkq2k36aq6wrihit7hwh7edelz2yz6vlrvergthidqdg3a",
+ :display_name "",
+ :fabric_layer "overlay",
+ :host_serial "1924XD600C",
+ :instance_ocid "ocid1.instance.oc1.eu-zurich-1.ab5heljr22ho3qoduawklsmwywq3ddnpw4s2ihckrvdcyapba6lvziw7xfyq",
+ :region "eu-zurich-1",
+ :shape "VM.Standard2.16",
+ :state "Running",
+ :tenant_id "ocid1.tenancy.oc1..aaaaaaaa27yjl4rkq2k36aq6wrihit7hwh7edelz2yz6vlrvergthidqdg3a",
+ :time_created "2019-08-16 09:50:27",
+ :time_terminated ""}
+clj꞉inventory-clj.core꞉> 
+#'inventory-clj.core/records
+clj꞉inventory-clj.core꞉> 
+{:ad "eu-zurich-1-ad-1",
+ :attached true,
+ :capacity_index 1.0,
+ :hypervisor_ocid "ocid1.vmhost.oc1.eu-zurich-1.an5heljrdzxjplqcwnbzqutm7ckqx7weqkn46trq5kr3uh7psh6j3a3hetcq",
+ :instance_ocid "ocid1.instance.oc1.eu-zurich-1.ab5heljr22ho3qoduawklsmwywq3ddnpw4s2ihckrvdcyapba6lvziw7xfyq",
+ :region "eu-zurich-1",
+ :reserved_cores 16.0,
+ :state "ATTACHED",
+ :time_created "2019-08-16T09:50:27.080Z",
+ :time_state_updated "2019-08-16T09:51:33.957Z"}
+clj꞉inventory-clj.core꞉> 
+(get-first-record (str records-path (records :VmiAttachmentData)))
+{:ad "eu-zurich-1-ad-1",
+ :attached true,
+ :capacity_index 1.0,
+ :hypervisor_ocid "ocid1.vmhost.oc1.eu-zurich-1.an5heljrdzxjplqcwnbzqutm7ckqx7weqkn46trq5kr3uh7psh6j3a3hetcq",
+ :instance_ocid "ocid1.instance.oc1.eu-zurich-1.ab5heljr22ho3qoduawklsmwywq3ddnpw4s2ihckrvdcyapba6lvziw7xfyq",
+ :region "eu-zurich-1",
+ :reserved_cores 16.0,
+ :state "ATTACHED",
+ :time_created "2019-08-16T09:50:27.080Z",
+ :time_state_updated "2019-08-16T09:51:33.957Z"}
+clj꞉inventory-clj.core꞉> 
+(get-first-record (str records-path (records :VmiInstanceData)))
+{:ad "eu-zurich-1-ad-1",
+ :compartment_id "ocid1.tenancy.oc1..aaaaaaaa27yjl4rkq2k36aq6wrihit7hwh7edelz2yz6vlrvergthidqdg3a",
+ :display_name "",
+ :fabric_layer "overlay",
+ :host_serial "1924XD600C",
+ :instance_ocid "ocid1.instance.oc1.eu-zurich-1.ab5heljr22ho3qoduawklsmwywq3ddnpw4s2ihckrvdcyapba6lvziw7xfyq",
+ :region "eu-zurich-1",
+ :shape "VM.Standard2.16",
+ :state "Running",
+ :tenant_id "ocid1.tenancy.oc1..aaaaaaaa27yjl4rkq2k36aq6wrihit7hwh7edelz2yz6vlrvergthidqdg3a",
+ :time_created "2019-08-16 09:50:27",
+ :time_terminated ""}
+clj꞉inventory-clj.core꞉> 
+(get-first-record (str records-path (record-files :DbContainer)))
+{:ad "EU_ZURICH_1_AD_1",
+ :customer_compartment_id "ocid1.compartment.oc1..aaaaaaaargimiyzx7pkw4fqrlckpjjdhnldrnirnhdkhjmba4votujb7754a",
+ :customer_phonebook_id "adp",
+ :customer_tenant_id "ocid1.tenancy.oc1..aaaaaaaau5s6lj67ia5vy6qjglhvquqdszjqlmvlmsetu4jrtjni4mng6hea",
+ :db_display_name "euzhhdoc",
+ :db_id "ocid1.adppoddb.oc1..aaaaaaaasr6x2djnn3kdp3tze5vq77vyoegenphr2brfrgzupvrc6njbvsua",
+ :db_service_name "",
+ :db_type "Oracle",
+ :db_version "19.0.0.0",
+ :elevation "",
+ :fabric "Overlay",
+ :instance_id "ocid1.adpvmcluster.oc1..aaaaaaaa53voblnwm2krkvudxkpoq5fas4m6ctio3e63hxywytn4jifj27wq",
+ :instance_type "ocid1.fusionenvironment.oc1.eu-zurich-1.aaaaaaaa7bq74d7mtvnjq4sd4b52hvwu54m2sfqpoig7dncbqjjget2ccxia",
+ :ip_addresses "",
+ :lifecycle_state "",
+ :port "1521",
+ :rack "",
+ :region "eu-zurich-1",
+ :scan_subnet_id "ocid1.subnet.oc1.eu-zurich-1.aaaaaaaaqsvwmfd6a4dzwdowpzo5vvavzyqombrvl5eyvbdaxscymgsflt5q",
+ :scan_subnet_physical_ad "",
+ :secrets_password_path "",
+ :secrets_username_path "",
+ :service_team_compartment_id "",
+ :service_team_phonebook_id "",
+ :service_team_simple_name "",
+ :service_team_tenant_id ""}
+clj꞉inventory-clj.core꞉> (list 1 2 3 4)
+(1 2 3 4)
+clj꞉inventory-clj.core꞉> 
+#{:first :something :else}
+#{:else :first :something}
+clj꞉inventory-clj.core꞉> 
+        #{:first :something :else :first}
+; Syntax error reading source at (REPL:134:42).
+; Duplicate key: :first
+clj꞉inventory-clj.core꞉> 
+{:one "one apple" :two "two berries" :three 56}
+{:one "one apple", :three 56, :two "two berries"}
+clj꞉inventory-clj.core꞉> 
+(list :one "two" 3)
+(:one "two" 3)
+clj꞉inventory-clj.core꞉> 
+{:one "apple" :two "berries" :three "banana"}
+                         
+{:one "apple", :three "banana", :two "berries"}
+clj꞉inventory-clj.core꞉> 
+({:one "apple" :two "berries" :three "banana"} :two)
+"berries"
+clj꞉inventory-clj.core꞉> 
+(get-first-record (str records-path (record-files :VmiInstanceData)))
+; Syntax error compiling at (.calva/output-window/output.calva-repl:151:37).
+; Unable to resolve symbol: record-files in this context
+clj꞉inventory-clj.core꞉> 
+(def record-files {:VmiHypervisorData "2022-03-01T00.10.20Z_vmi_VmiHypervisorData_000006_eu-zurich-1.json"
+                   :VmiInstanceData "2022-03-01T00.10.20Z_vmi_VmiInstanceData_000007_eu-zurich-1.json"
+                   :DbContainer "2022-03-01T00.48.40Z_dbcontainer_DbContainer_000001_eu-zurich-1.json"
+                   :ComputeAdminHost "2022-03-01T00.48.41Z_compute_ComputeAdminHost_000001_eu-zurich-1.json"
+                   :LbaasHost "2022-03-01T00.50.02Z_lbaas_LbaasHost_000002_eu-zurich-1.json"
+                   :LbaasRecord "2022-03-01T00.50.02Z_lbaas_LbaasRecord_000001_eu-zurich-1.json"
+                   :CardManagementCardLiquidio "2022-03-01T00.53.12Z_cardmanagement_CardManagementCardLiquidio_000001_eu-zurich-1.json"
+                   :HopsCavium "2022-03-01T00.59.12Z_hops_HopsCavium_000002_eu-zurich-1.json"
+                   :HopsHost "2022-03-01T00.59.12Z_hops_HopsHost_000001_eu-zurich-1.json"
+                   :VmiAttachmentData "2022-03-01T01.10.44Z_vmi_VmiAttachmentData_000005_eu-zurich-1.json"
+                   :VmiVnicAttachmentData "2022-03-01T01.10.44Z_vmi_VmiVnicAttachmentData_000008_eu-zurich-1.json"})
+#'inventory-clj.core/record-files
+clj꞉inventory-clj.core꞉> 
+(get-first-record (str records-path (record-files :VmiInstanceData)))
+{:ad "eu-zurich-1-ad-1",
+ :compartment_id "ocid1.tenancy.oc1..aaaaaaaa27yjl4rkq2k36aq6wrihit7hwh7edelz2yz6vlrvergthidqdg3a",
+ :display_name "",
+ :fabric_layer "overlay",
+ :host_serial "1924XD600C",
+ :instance_ocid "ocid1.instance.oc1.eu-zurich-1.ab5heljr22ho3qoduawklsmwywq3ddnpw4s2ihckrvdcyapba6lvziw7xfyq",
+ :region "eu-zurich-1",
+ :shape "VM.Standard2.16",
+ :state "Running",
+ :tenant_id "ocid1.tenancy.oc1..aaaaaaaa27yjl4rkq2k36aq6wrihit7hwh7edelz2yz6vlrvergthidqdg3a",
+ :time_created "2019-08-16 09:50:27",
+ :time_terminated ""}
+clj꞉inventory-clj.core꞉> 
+; nREPL Connection was closed
